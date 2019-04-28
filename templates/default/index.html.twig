@@ -1,16 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block title %}Baseball Club!{% endblock %}
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="row">
+        <nav class="col s12 crumb-path">
+            <div class="nav-wrapper">
+                <span class="breadcrumb">Baseball Club!</span>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <div class="card ">
+                    <div class="card-content">
+                        <span class="card-title">Mobile </span>
+                        Download our mobile from the Google App store or Apple Store. (soon wil be released)
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/jeroen/PhpstormProjects/BaseballClub/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/jeroen/PhpstormProjects/BaseballClub/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card s4">
+                    <div class="card-content">
+                        <span class="card-title">API documentation </span>
+                        Go to the API documentation -> <a href="{{ path('nelmio_api_doc_index', {'view': 'x'}) }} "> api documentation </a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="card s4">
+                    <div class="card-content">
+                        <span class="card-title">Administration</span>
+                        Manage the club via the web interface -> <a href="#"> Club Administration </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 {% endblock %}
