@@ -1,0 +1,191 @@
+$primary-color: #002c6b;
+$secondary-color: #0592ae;
+$success: rgb(76, 175, 80);
+$error: #f44336;
+$warning: #ffb300;
+$information: #00bcd4;
+
+$h1-fontsize: 2rem !default;
+$h2-fontsize: 1.8rem !default;
+$h3-fontsize: 1.5rem !default;
+$h4-fontsize: 1.3rem !default;
+$h5-fontsize: 1.1rem !default;
+$h6-fontsize: 1.05rem !default;
+@import "~materialize-css/sass/materialize";
+@import "./margins.scss";
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+
+.header {
+    color: $primary-color;
+}
+
+.sidenav {
+    top: 65px;
+    height: 100%;
+li > a {
+    height: auto;
+}
+}
+textarea.materialize-textarea {
+    min-height: 6rem;
+}
+
+.main-content {
+    padding-left: 300px;
+}
+
+
+.nav-bar-icons {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0;
+}
+
+.header-logo-text {
+    vertical-align: top;
+}
+
+@media only screen and (max-width: 992px) {
+    .main-content {
+        padding-left: 0;
+    }
+    .sidenav {
+        top: 0;
+    }
+
+    .exsyn-logo {
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 0;
+    }
+
+    .nav-bar-icons {
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 0;
+    }
+
+    .menu-button {
+        line-height: 0 !important;
+        margin: 18px !important;
+    }
+}
+
+
+.preloader-wrapper-wrapper {
+    height: 200px;
+}
+
+.align-center {
+    margin: 0 auto;
+}
+
+.dragscroll {
+    cursor: grab;
+}
+
+.ajax-modal-link {
+    cursor: pointer;
+}
+
+.card-content .card-content {
+    padding: 0;
+    border-radius: 0;
+}
+
+form .row {
+    margin-bottom: $margin1;
+}
+
+nav.crumb-path {
+    background-color: $secondary-color;
+}
+
+.content-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.content-center > * {
+    align-items: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-small {
+    font-size: 0.7em;
+}
+
+.text-large {
+    font-size: 1.2em;
+}
+
+.card .card-panel {
+    padding: 10px;
+}
+
+.table-bordered {
+td, th {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+td.no-vborder,
+th.no-vborder {
+    border-left: 0 none;
+    border-right: 0 none;
+}
+}
+
+td.no-border,
+th.no-border {
+    border: 0 none;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+/* this colors are used for toast message but are not limited to this usages */
+.success {
+    background-color: $success;
+}
+
+.error {
+    background-color: $error;
+}
+
+.warning {
+    background-color: $warning;
+}
+
+.info {
+    background-color: $information;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
