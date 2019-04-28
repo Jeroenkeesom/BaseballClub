@@ -2,18 +2,19 @@
 
 namespace App\Controller\Api;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UserController extends AbstractController
+class UserController extends AbstractFOSRestController
 {
     /**
-     * @Route("/api/user", name="api_user")
+     * @Route("/api/v1/users", name="api_user")
      */
-    public function index()
+    public function getUserList()
     {
-        return $this->render('api/user/index.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        $users = array ('jeroen' => 'keesom');
+        $view = $this->view($users, 200);
+
+        return $this->handleView($view);
     }
 }
