@@ -1,0 +1,76 @@
+nelmio_api_doc:
+#    documentation:
+#        host: baseballclub.iloveto.dev
+#        schemes: [https]
+#        consumes:
+#            - application/x-www-form-urlencoded
+#        produces:
+#            - application/json
+#        securityDefinitions:
+#            Bearer:
+#                type: apiKey
+#                description: 'Value: Bearer {jwt}'
+#                name: Authorization
+#                in: header
+#            OAuth2:
+#                type: oauth2
+#                flow: accessCode
+#                authorizationUrl: https://baseballclub.iloveto.dev/oauth/authorize
+#                tokenUrl: https://baseballclub.iloveto.dev/oauth/token
+#                scopes:
+#                    PLAYER: info about player
+#                    COACH: info about team
+#                    ADMIN: full info
+#        security:
+#            - Bearer: []
+#            - OAuth2: []
+#        servers:
+#            - url: //baseballclub.iloveto.dev
+#              description: Default server
+#        info:
+#            title: baseballclub API Documentation
+#            version: 1.0.0
+#            description: |
+#                This is the Api documentation for the Baseball Club.
+#
+#                # Introduction
+#                The API interface offered is for use to allow system integration within our app
+#
+#                # OpenAPI Specification
+#                This API is documented in **OpenAPI format**.
+#
+#                # Authentication
+#
+#                baseball cluboffers two forms of authentication:
+#                  - API Key
+#                  - OAuth2
+#                OAuth2 - an open protocol to allow secure authorization in a simple
+#                and standard method from web, mobile and desktop applications.
+#                Both methodes have to be requested with customer/client login and can be done via the admin menu (if allowed)
+#
+#                <security-definitions />
+#        termsOfService: 'http://swagger.io/terms/'
+#        contact:
+#            name: API Support
+#            email: jeroen.mozo.@gmail.com
+#            url: https://gitlab.mozo.nl
+#        x-logo:
+#            url: 'https://my.exsyn.com/image/logo2017.png'
+#            altText: baseball club logo
+#        license:
+#            name: Apache 2.0
+#            url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+#        externalDocs:
+#            description: Find out more about our API and for your OpenAPI spec.
+#            url: 'https://kb.exsyn.com/me/api/documentation'
+#        tags:
+#            - name: Games
+#              description: Everything about game stats
+#            - name: Training
+#              description: Everything about Training stats
+#            - name: Users
+#              description: Operations about user
+#    areas: # to filter documented areas
+#        path_patterns:
+#            - ^/api(?!/doc) # Accepts routes under /api except /api/doc
+#    models: { use_jms: false }
