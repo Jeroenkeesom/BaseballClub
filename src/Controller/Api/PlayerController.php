@@ -1,14 +1,16 @@
 <?php
 
+
 namespace App\Controller\Api;
+
 
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class UserController extends AbstractFOSRestController
+class PlayerController extends AbstractFOSRestController
 {
     /**
-     * @Route("/api/v1/users", name="api_users")
+     * @Route("/api/v1/players", name="api_players")
      */
     public function getUserList()
     {
