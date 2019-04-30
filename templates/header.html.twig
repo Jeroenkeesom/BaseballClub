@@ -1,0 +1,15 @@
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
+    <li><a href="{{ path('fos_user_change_password') }}">Change Password</a></li>
+    <li class="divider"></li>
+    <li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
+</ul>
+<nav class="col s12 navbar-fixed">
+    {% block nav_path %}
+        <span class="breadcrumb ">&nbsp; Baseball Club!</span>
+    {% endblock %}
+    <ul class="right">
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><i class="material-icons right">face</i></a></li>
+    </ul>
+</nav>

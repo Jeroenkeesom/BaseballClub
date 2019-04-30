@@ -19,6 +19,9 @@
 </head>
 <body>
 {% block body %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% include 'header.html.twig' %}
+    {% endif %}
 {% endblock %}
 </body>
 </html>
