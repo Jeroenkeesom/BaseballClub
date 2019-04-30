@@ -36,9 +36,6 @@ textarea.materialize-textarea {
     min-height: 6rem;
 }
 
-.main-content {
-    padding-left: 300px;
-}
 
 
 .nav-bar-icons {
@@ -48,24 +45,9 @@ textarea.materialize-textarea {
     padding-bottom: 0;
 }
 
-.header-logo-text {
-    vertical-align: top;
-}
 
 @media only screen and (max-width: 992px) {
-    .main-content {
-        padding-left: 0;
-    }
-    .sidenav {
-        top: 0;
-    }
 
-    .exsyn-logo {
-        padding-top: 20px;
-        padding-left: 5px;
-        padding-right: 5px;
-        padding-bottom: 0;
-    }
 
     .nav-bar-icons {
         padding-top: 20px;
@@ -74,27 +56,7 @@ textarea.materialize-textarea {
         padding-bottom: 0;
     }
 
-    .menu-button {
-        line-height: 0 !important;
-        margin: 18px !important;
-    }
-}
 
-
-.preloader-wrapper-wrapper {
-    height: 200px;
-}
-
-.align-center {
-    margin: 0 auto;
-}
-
-.dragscroll {
-    cursor: grab;
-}
-
-.ajax-modal-link {
-    cursor: pointer;
 }
 
 .card-content .card-content {
@@ -106,9 +68,6 @@ form .row {
     margin-bottom: $margin1;
 }
 
-nav.crumb-path {
-    background-color: $secondary-color;
-}
 
 .content-center {
     align-items: center;

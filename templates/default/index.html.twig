@@ -3,43 +3,56 @@
 {% block title %}Baseball Club!{% endblock %}
 
 {% block body %}
-
-    <div class="row">
-        <nav class="col s12 crumb-path">
-            <div class="nav-wrapper">
-                <span class="breadcrumb">Baseball Club!</span>
-            </div>
-        </nav>
-    </div>
+    <nav class="col s12 crumb-path">
+        <span class="breadcrumb">&nbsp; Baseball Club!</span>
+    </nav>
     <div class="container">
         <div class="row">
-            <div class="col s4">
+            <div class="col s12">
                 <div class="card ">
                     <div class="card-content">
-                        <span class="card-title">Mobile </span>
-                        Download our mobile from the Google App store or Apple Store. (soon wil be released)
-
-                    </div>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="card s4">
-                    <div class="card-content">
-                        <span class="card-title">API documentation </span>
-                        Go to the API documentation -> <a href="{{ path('nelmio_api_doc_index', {'view': 'x'}) }} "> api documentation </a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="card s4">
-                    <div class="card-content">
-                        <span class="card-title">Administration</span>
-                        Manage the club via the web interface -> <a href="#"> Club Administration </a>
+                        <span class="card-title">Played Game Overview </span>
+                        <table class="striped">
+                            <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>% inning played</th>
+                                <th># games played</th>
+                                <th># games present</th>
+                                <th># innings played</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td> Jeroen #22</td>
+                                <td><strong>85%</strong></td>
+                                <td> 2</td>
+                                <td> 3</td>
+                                <td> 15</td>
+                            </tr>
+                            <tr>
+                                <td> Q #11</td>
+                                <td><strong>87%</strong></td>
+                                <td> 3</td>
+                                <td> 3</td>
+                                <td> 25</td>
+                            </tr>
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
             </div>
         </div>
-</div>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red">
+                <i class="large material-icons">add</i>
+            </a>
+            <ul>
+                <li><a class="btn-floating red"><i class="material-icons">games</i></a></li>
+                <li><a class="btn-floating blue darken-1"><i class="material-icons">directions_walk</i></a></li>
+                <li><a class="btn-floating green"><i class="material-icons">person_add</i></a></li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
