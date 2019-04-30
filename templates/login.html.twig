@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+{% block title %} Login {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        html, body {
+            /* Center and scale the image nicely */
+            background-size: cover;
+            background: url("{{ asset('build/field.jpg') }}") no-repeat fixed center;
+            background-color: #eee;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: right bottom;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col s8 offset-s3">
+                    <div class="card z-depth-6">
+                        <div class="card-content">
+                            <div class="text-center mb-1">
+                                <img src="https://scontent-amt2-1.cdninstagram.com/vp/f283bc4bc287e8eb0e0d6aee9c2f4184/5CE58274/t51.2885-15/sh0.08/e35/s640x640/41481738_2166896106918098_3330153503381449625_n.jpg?_nc_ht=scontent-amt2-1.cdninstagram.com"
+                                     class="login-logo"/>
+                            </div>
+                            <span class="card-title">
+                            Login - Baseball Club
+                        </span>
+                            <p>Use your Baseball Club account to login</p>
+                            {% if error %}
+                                <div class="card-panel red white-text">
+                                    <i class="material-icons left">error</i>
+                                    Error: {{ error.messageKey|trans(error.messageData, "security") }}
+                                </div>
+                            {% endif %}
+                            <form method="post" action="{{ path("fos_user_security_check") }}">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token("authenticate") }}">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input class="validate" type="text" name="_username" id="username" value="{{ last_username }}" required/>
+                                        <label for="username">Username</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input class="validate" type="password" name="_password" placeholder="password" id="login-password" required/>
+                                        <label for="login-password">Password</label>
+                                        <a href="{{ path('fos_user_change_password') }}" class="text-small">Forgot Password?</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <div class="switch">
+                                            <label>
+                                                Remember me: &nbsp; Off
+                                                <input type="checkbox" id="checkbox-1" name="_remember_me">
+                                                <span class="lever"></span>
+                                                On
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <button type="submit" name="btn_login" class="btn waves-effect">Login</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="row mb-0">
+                                <div class="col s6 text-small">
+                                    Don"t have an account? <a href="{{ path("fos_user_registration_register") }}">Sign Up Here</a>
+                                </div>
+                                <div class="col s6 text-small text-right">
+                                    <a target="_blank" href="#">Privacy Statement not available</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

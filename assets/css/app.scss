@@ -1,5 +1,5 @@
-$primary-color: #002c6b;
-$secondary-color: #0592ae;
+$primary-color: #0062ff;
+$secondary-color: #0b15ae;
 $success: rgb(76, 175, 80);
 $error: #f44336;
 $warning: #ffb300;
@@ -187,5 +187,11 @@ th.no-border {
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.login-logo {
+    position: relative;
+    width: 20%;
+    height: 20%;
 }
 
