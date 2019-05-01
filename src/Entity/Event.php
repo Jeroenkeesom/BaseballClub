@@ -19,7 +19,7 @@ class Event
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(EventType $type): self
     {
         $this->type = $type;
 
