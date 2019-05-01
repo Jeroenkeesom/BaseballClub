@@ -23,6 +23,14 @@ security:
 
             logout:       true
             anonymous:    true
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 15724800 # 26 weeks in seconds
+                path:     /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                always_remember_me: true
 #        oauth_token:
 #            pattern:    ^/oauth/v2/token
 #            security:   false
