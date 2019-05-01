@@ -22,6 +22,7 @@ function initMaterializeElements() {
     $('.modal').modal();
     $('.tooltipped').tooltip();
     $('.datepicker').datepicker();
+    $('select').formSelect();
 }
 
 $(document).ready(initMaterializeElements);
@@ -38,3 +39,4 @@ $(document).ready(function () {
         });
     }
 });
+

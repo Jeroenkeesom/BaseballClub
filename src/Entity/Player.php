@@ -6,9 +6,6 @@ use DateTimeInterface;
 
 class Player
 {
-    const TRAINEE = 1;
-    const GAME = 2;
-
     private $active;
 
     private $firstName;
