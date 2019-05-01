@@ -8,7 +8,8 @@
         <field name="active" type="boolean"/>
         <field name="firstName" type="string" nullable="false"/>
         <field name="lastName" type="string" nullable="false"/>
-        <field name="nickName" type="string" nullable="false"/>
+        <field name="nickName" type="string" nullable="true"/>
+        <field name="playerType" type="string" nullable="false"/>
         <field name="shirtNumber" type="integer" nullable="true"/>
         <field name="preferredPosition" type="string" nullable="true"/>
         <field name="activeSince" type="date" nullable="true"/>

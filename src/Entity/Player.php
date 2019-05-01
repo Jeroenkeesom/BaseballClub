@@ -6,6 +6,9 @@ use DateTimeInterface;
 
 class Player
 {
+    const TRAINEE = 1;
+    const GAME = 2;
+
     private $active;
 
     private $firstName;
@@ -23,6 +26,8 @@ class Player
     private $id;
 
     private $team;
+
+    private $playerType;
 
     public function getActive(): ?bool
     {
@@ -121,6 +126,18 @@ class Player
     public function setTeam(?Team $team): self
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function getPlayerType(): ?string
+    {
+        return $this->playerType;
+    }
+
+    public function setPlayerType(string $playerType): self
+    {
+        $this->playerType = $playerType;
 
         return $this;
     }

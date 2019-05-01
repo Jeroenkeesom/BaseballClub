@@ -15,7 +15,9 @@
         <script type="text/javascript" src="{{ asset('build/app.js') }}"></script>
 
     {% endblock %}
-
+    <script>
+        window.toast = '{{ app.flashes|json_encode|raw }}';
+    </script>
 </head>
 <body>
 {% block body %}

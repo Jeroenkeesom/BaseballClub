@@ -26,3 +26,15 @@ function initMaterializeElements() {
 
 $(document).ready(initMaterializeElements);
 
+$(document).ready(function () {
+    if (window.toast !== '[]' && typeof window.toast != 'undefined') {
+        var toastJson = JSON.parse(window.toast);
+        $.each(toastJson, function (index, value) {
+            var message = '<i class="material-icons">' + index + '</i> &nbsp;' + value;
+            if (index === 'success') {
+                message = '<i class="material-icons">looks</i> &nbsp;' + value;
+            }
+            M.toast({html: message, classes: index});
+        });
+    }
+});
