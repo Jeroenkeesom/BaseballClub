@@ -131,24 +131,39 @@ class CalculationService
      */
     public function getAvgTrainingPres(Player $player)
     {
+        $totalTrainings = $this->getTotalTraining();
+        $trainingPresents = $this->getTrainingsPresent($player);
+        if ($totalTrainings < 1) {
+            return 0.0;
+        }
+
+        return $trainingPresents / $totalTrainings * 100;
+    }
+
+    private function getTotalTraining()
+    {
         $totalTrainings = 0;
-        $trainingPresents = 0;
+
         $allGames = $this->eventRepo->findAll();
         foreach ($allGames as $game) {
             if ($game->getType()->getName() == 'Training') {
                 $totalTrainings++;
             }
         }
+
+        return $totalTrainings;
+    }
+
+    private function getTrainingsPresent(Player $player)
+    {
+        $trainingPresents = 0;
         foreach ($player->getEventPresences() as $presence) {
             if ($presence->getEvent()->getType()->getName() == 'Training') {
                 $trainingPresents++;
             }
         }
-        if ($totalTrainings < 1) {
-            return 0.0;
-        }
 
-        return $trainingPresents / $totalTrainings * 100;
+        return $trainingPresents;
     }
 
     /**
@@ -163,6 +178,15 @@ class CalculationService
      */
     public function getI2TNumber(Player $player)
     {
-        return 0.0;
+        $totalGameInningsWhenPresent = $this->getAvailableInnings($player);
+        $totalInningsPlayed = $this->getNumberOfInningsPlayed($player);
+        $totalTrainings = $this->getTotalTraining();
+        $totalTrainingPresent = $this->getTrainingsPresent($player);
+        if ($totalTrainings == 0 || $totalGameInningsWhenPresent == 0) {
+            return 1;
+        }
+        $sum = ($totalTrainingPresent / $totalTrainings) / ($totalInningsPlayed / $totalGameInningsWhenPresent);
+
+        return $sum;
     }
 }

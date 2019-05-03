@@ -33,7 +33,7 @@
                                 <td>{{ key.ipn }}</td>
                                 <td>{{ key.ipa }}</td>
                                 <td>{{ key.tr |round(0, 'floor') }}%</td>
-                                <td>{{ key.i2t }}</td>
+                                <td><strong>{{ key.i2t |round(3, 'floor') }}</strong></td>
                             </tr>
                             {% endfor %}
                             </tbody>
