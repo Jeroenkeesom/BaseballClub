@@ -18,15 +18,21 @@
                         <form action="{{ path('register-game-presence') }}" method="post" class="card-content">
                             <div class="event-form">
                                 {% for player in players %}
-                                    {{ player.firstName }} {{ player.lastName }}
                                     <div class="row">
+                                        {{ player.firstName }} {{ player.lastName }}
                                         <div class="input-field col s12 form">
-                                            <input type="number" min="0" max="{{ max_inning }}" name="no-of-innings[{{ player.id }}]" value="{{ max_inning }} id=" noOfInnings" required="required">
-                                            <label class="input required active" for="noOfInnings">No of Inn played? </label>
+                                            <div class="input-field col s12 form">
+                                                <input type="number" min="0" max="{{ max_inning }}" name="no-of-innings[{{ player.id }}]" value="{{ max_inning }}" id=" noOfInnings[{{ player.id }}]" required="required">
+                                                <label class="input required active" for="noOfInnings[{{ player.id }}]">No of Inn played?</label>
+                                            </div>
+                                            <div class="input-field col s12 form">
+                                                <label class="input active" for="present[{{ player.id }}]">
+                                                    <input type="checkbox" name="present[{{ player.id }}]" id="present[{{ player.id }}]">
+                                                    <span>{{ player.firstName }} present during game? </span>
+                                                </label>
+                                            </div>
                                         </div>
-                                        <hr/>
                                     </div>
-
                                 {% endfor %}
                                 <input type="hidden" name="gameId" value="{{ game_id }}">
                                 <button class="buttons btn green" value="submit" name="submit">Save</button>

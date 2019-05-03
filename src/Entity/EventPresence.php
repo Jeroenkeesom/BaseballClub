@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class EventPresence
 {
@@ -14,6 +13,8 @@ class EventPresence
     private $event;
 
     private $player;
+
+    private $presentDuringGame;
 
     public function __construct()
     {
@@ -50,9 +51,9 @@ class EventPresence
     }
 
     /**
-     * @return Collection|Player[]
+     * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function getPlayer(): Collection
+    public function getPlayer()
     {
         return $this->player;
     }
@@ -78,6 +79,18 @@ class EventPresence
         if ($this->player->contains($player)) {
             $this->player->removeElement($player);
         }
+
+        return $this;
+    }
+
+    public function getPresentDuringGame(): ?bool
+    {
+        return $this->presentDuringGame;
+    }
+
+    public function setPresentDuringGame(?bool $presentDuringGame): self
+    {
+        $this->presentDuringGame = $presentDuringGame;
 
         return $this;
     }

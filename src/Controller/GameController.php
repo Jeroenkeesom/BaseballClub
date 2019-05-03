@@ -60,13 +60,19 @@ class GameController extends AbstractController
 
             $playedInningArray = $request->request->get('no-of-innings');
             $gameId = (int)$request->request->get('gameId');
+            $present = $request->request->get('present');
             $game = $this->getDoctrine()->getRepository(Event::class)->find($gameId);
             $em = $this->getDoctrine()->getManager();
-            dump($gameId, $playedInningArray);
+            dump($gameId, $playedInningArray, $present);
 
             foreach ($playedInningArray as $playerId => $noOfInnings) {
+                $playerPresent = false;
+                if (array_key_exists($playerId, $present)) {
+                    $playerPresent = true;
+                }
                 $presence = new EventPresence();
                 $presence->setEvent($game);
+                $presence->setPresentDuringGame($playerPresent);
                 $presence->setPlayer($this->getDoctrine()->getRepository(Player::class)->find($playerId));
                 $presence->setNoOfInningsPlayed($noOfInnings);
                 $em->persist($presence);

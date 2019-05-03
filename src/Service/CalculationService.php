@@ -5,13 +5,16 @@ namespace App\Service;
 
 
 use App\Entity\Player;
+use App\Repository\EventRepository;
 
 class CalculationService
 {
-    private $playerRepo;
+    private $eventRepo;
 
-    private $presenceRepo;
-
+    public function __construct(EventRepository $eventRepository)
+    {
+        $this->eventRepo = $eventRepository;
+    }
 
     /**
      * return the percentage of inning played vs games total innings for games player was present.
@@ -22,20 +25,13 @@ class CalculationService
      */
     public function getIPPercentage(Player $player)
     {
-        $pre = $player->getEventPresences();
-        $inningsPlayed = 0;
-        $totalGameInnings = 0;
-        foreach ($pre as $presence) {
-            if ($presence->getEvent()->getType()->getName() == 'Game') {
-                $inningsPlayed = $inningsPlayed + $presence->getNoOfInningsPlayed();
-                $totalGameInnings = $totalGameInnings + $presence->getEvent()->getNoOfInnings();
-            }
-        }
-        if ($inningsPlayed == 0) {
+        $totalGameInningsWhenPresent = $this->getAvailableInnings($player);
+        $totalInningsPlayed = $this->getNumberOfInningsPlayed($player);
+        if ($totalGameInningsWhenPresent == 0) {
             return 0;
         }
 
-        return $totalGameInnings / $inningsPlayed;
+        return $totalInningsPlayed / $totalGameInningsWhenPresent * 100;
     }
 
     /**
@@ -72,7 +68,7 @@ class CalculationService
         $games = $player->getEventPresences();
         $count = 0;
         foreach ($games as $game) {
-            if ($game->getNoOfInningsPlayed() >= 0 && $game->getEvent()->getType()->getName() == 'Game') {
+            if ($game->getPresentDuringGame() && $game->getEvent()->getType()->getName() == 'Game') {
                 $count++;
             }
         }
@@ -109,7 +105,21 @@ class CalculationService
      */
     public function getAvailableInnings(Player $player)
     {
-        return 0;
+        $allGames = $this->eventRepo->findAll();
+        $totalGameInnings = 0;
+        foreach ($allGames as $game) {
+            if ($game->getType()->getName() == 'Game') {
+                foreach ($game->getPresences() as $gamePressence) {
+                    if ($gamePressence->getPlayer() === $player) {
+                        if ($gamePressence->getPresentDuringGame()) {
+                            $totalGameInnings = $totalGameInnings + $game->getNoOfInnings();
+                        }
+                    }
+                }
+            }
+        }
+
+        return $totalGameInnings;
     }
 
     /**

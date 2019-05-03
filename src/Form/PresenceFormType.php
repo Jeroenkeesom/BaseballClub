@@ -6,6 +6,7 @@ namespace App\Form;
 
 use App\Entity\EventPresence;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,19 @@ class PresenceFormType extends AbstractType
                     'max' => $options['innings'],
                 ],
                 'required' => true,
-
+                'data' => 0,
+            ]
+        );
+        $builder->add(
+            'presentDuringGame',
+            ChoiceType::class,
+            [
+                'required' => true,
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false,
+                ],
+                'multiple' => false,
             ]
         );
         $builder->add('submit', SubmitType::class);

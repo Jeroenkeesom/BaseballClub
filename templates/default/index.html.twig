@@ -16,7 +16,7 @@
                                 <th>Player</th>
                                 <th>IP%</th>
                                 <th>GP#</th>
-                                <th>GPr</th>
+                                <th>GAv</th>
                                 <th>IP#</th>
                                 <th>IA#</th>
                                 <th>TR%</th>
@@ -27,7 +27,7 @@
                             {% for key in calculatedPlayerResult %}
                             <tr>
                                 <td>{{ key.player.firstName }} #{{ key.player.shirtNumber }}</td>
-                                <td>{{ key.ips }} </td>
+                                <td>{{ key.ips|round(0, 'floor') }}%</td>
                                 <td>{{ key.gp }}</td>
                                 <td>{{ key.gpr }}</td>
                                 <td>{{ key.ipn }}</td>
