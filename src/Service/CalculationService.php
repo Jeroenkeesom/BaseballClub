@@ -123,7 +123,7 @@ class CalculationService
     }
 
     /**
-     * returns the average training presents over last 4 weeks.
+     * returns the average training presents.
      *
      * @param \App\Entity\Player $player
      *
@@ -131,8 +131,24 @@ class CalculationService
      */
     public function getAvgTrainingPres(Player $player)
     {
+        $totalTrainings = 0;
+        $trainingPresents = 0;
+        $allGames = $this->eventRepo->findAll();
+        foreach ($allGames as $game) {
+            if ($game->getType()->getName() == 'Training') {
+                $totalTrainings++;
+            }
+        }
+        foreach ($player->getEventPresences() as $presence) {
+            if ($presence->getEvent()->getType()->getName() == 'Training') {
+                $trainingPresents++;
+            }
+        }
+        if ($totalTrainings < 1) {
+            return 0.0;
+        }
 
-        return 0.0;
+        return $trainingPresents / $totalTrainings * 100;
     }
 
     /**
