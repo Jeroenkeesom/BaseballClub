@@ -6,7 +6,7 @@
             <generator strategy="IDENTITY"/>
         </id>
         <field name="NoOfInningsPlayed" type="integer" nullable="true"/>
-        <many-to-one field="event" target-entity="App\Entity\Event"/>
-        <many-to-one field="player" target-entity="App\Entity\Player"/>
+        <many-to-one field="event" target-entity="App\Entity\Event" inversed-by="presences"/>
+        <many-to-one field="player" target-entity="App\Entity\Player" inversed-by="eventPresences"/>
     </entity>
 </doctrine-mapping>

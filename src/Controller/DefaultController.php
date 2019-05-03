@@ -27,6 +27,7 @@ class DefaultController extends AbstractController
             $calculatedPlayerResult[$player->getId()]['gp'] = $calculation->getGPNumber($player);
             $calculatedPlayerResult[$player->getId()]['gpr'] = $calculation->getGamesPresent($player);
             $calculatedPlayerResult[$player->getId()]['ipn'] = $calculation->getNumberOfInningsPlayed($player);
+            $calculatedPlayerResult[$player->getId()]['ipa'] = $calculation->getAvailableInnings($player);
             $calculatedPlayerResult[$player->getId()]['tr'] = $calculation->getAvgTrainingPres($player);
             $calculatedPlayerResult[$player->getId()]['i2t'] = $calculation->getI2TNumber($player);
         }

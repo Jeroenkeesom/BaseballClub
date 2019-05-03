@@ -22,8 +22,20 @@ class CalculationService
      */
     public function getIPPercentage(Player $player)
     {
+        $pre = $player->getEventPresences();
+        $inningsPlayed = 0;
+        $totalGameInnings = 0;
+        foreach ($pre as $presence) {
+            if ($presence->getEvent()->getType()->getName() == 'Game') {
+                $inningsPlayed = $inningsPlayed + $presence->getNoOfInningsPlayed();
+                $totalGameInnings = $totalGameInnings + $presence->getEvent()->getNoOfInnings();
+            }
+        }
+        if ($inningsPlayed == 0) {
+            return 0;
+        }
 
-        return 0.0;
+        return $totalGameInnings / $inningsPlayed;
     }
 
     /**
@@ -35,8 +47,15 @@ class CalculationService
      */
     public function getGPNumber(Player $player)
     {
+        $games = $player->getEventPresences();
+        $count = 0;
+        foreach ($games as $game) {
+            if ($game->getNoOfInningsPlayed() > 0 && $game->getEvent()->getType()->getName() == 'Game') {
+                $count++;
+            }
+        }
 
-        return 0;
+        return $count;
     }
 
 
@@ -50,8 +69,15 @@ class CalculationService
      */
     public function getGamesPresent(Player $player)
     {
+        $games = $player->getEventPresences();
+        $count = 0;
+        foreach ($games as $game) {
+            if ($game->getNoOfInningsPlayed() >= 0 && $game->getEvent()->getType()->getName() == 'Game') {
+                $count++;
+            }
+        }
 
-        return 0;
+        return $count;
     }
 
     /**
@@ -63,7 +89,26 @@ class CalculationService
      */
     public function getNumberOfInningsPlayed(Player $player)
     {
+        $games = $player->getEventPresences();
+        $count = 0;
+        foreach ($games as $game) {
+            if ($game->getEvent()->getType()->getName() == 'Game') {
+                $count = $count + $game->getNoOfInningsPlayed();
+            }
+        }
 
+        return $count;
+    }
+
+    /**
+     * returns the number of inning available over all games present
+     *
+     * @param \App\Entity\Player $player
+     *
+     * @return int
+     */
+    public function getAvailableInnings(Player $player)
+    {
         return 0;
     }
 

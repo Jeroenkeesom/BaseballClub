@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Player
 {
@@ -25,6 +27,13 @@ class Player
     private $team;
 
     private $playerType;
+
+    private $eventPresences;
+
+    public function __construct()
+    {
+        $this->eventPresences = new ArrayCollection();
+    }
 
     public function getActive(): ?bool
     {
@@ -135,6 +144,37 @@ class Player
     public function setPlayerType(string $playerType): self
     {
         $this->playerType = $playerType;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventPresence[]
+     */
+    public function getEventPresences(): Collection
+    {
+        return $this->eventPresences;
+    }
+
+    public function addEventPresence(EventPresence $eventPresence): self
+    {
+        if (!$this->eventPresences->contains($eventPresence)) {
+            $this->eventPresences[] = $eventPresence;
+            $eventPresence->setPlayer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventPresence(EventPresence $eventPresence): self
+    {
+        if ($this->eventPresences->contains($eventPresence)) {
+            $this->eventPresences->removeElement($eventPresence);
+            // set the owning side to null (unless already changed)
+            if ($eventPresence->getPlayer() === $this) {
+                $eventPresence->setPlayer(null);
+            }
+        }
 
         return $this;
     }

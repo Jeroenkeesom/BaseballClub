@@ -8,5 +8,10 @@
         <many-to-one field="type" target-entity="App\Entity\EventType" inversed-by="events"/>
         <field name="date" type="date" nullable="false"/>
         <field name="NoOfInnings" type="integer" nullable="true"/>
+        <one-to-many field="presences" target-entity="App\Entity\EventPresence" mapped-by="event">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
     </entity>
 </doctrine-mapping>
