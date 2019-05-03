@@ -11,11 +11,11 @@ class Team
 
     private $id;
 
-    private $player;
+    private $players;
 
     public function __construct()
     {
-        $this->player = new ArrayCollection();
+        $this->players = new ArrayCollection();
     }
 
     public function getName(): ?string
@@ -38,16 +38,16 @@ class Team
     /**
      * @return Collection|Player[]
      */
-    public function getPlayer(): Collection
+    public function getPlayers(): Collection
     {
-        return $this->player;
+        return $this->players;
     }
 
     public function addPlayer(Player $player): self
     {
-        if (!$this->player->contains($player)) {
-            $this->player[] = $player;
-            $player->setId($this);
+        if (!$this->players->contains($player)) {
+            $this->players[] = $player;
+            $player->setTeam($this);
         }
 
         return $this;
@@ -55,11 +55,11 @@ class Team
 
     public function removePlayer(Player $player): self
     {
-        if ($this->player->contains($player)) {
-            $this->player->removeElement($player);
+        if ($this->players->contains($player)) {
+            $this->players->removeElement($player);
             // set the owning side to null (unless already changed)
             if ($player->getId() === $this) {
-                $player->setId(null);
+                $player->setTeam(null);
             }
         }
 

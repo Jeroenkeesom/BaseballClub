@@ -13,7 +13,7 @@
         <field name="shirtNumber" type="integer" nullable="true"/>
         <field name="preferredPosition" type="string" nullable="true"/>
         <field name="activeSince" type="date" nullable="true"/>
-        <many-to-one field="team" target-entity="Team" inversed-by="player">
+        <many-to-one field="team" target-entity="Team" inversed-by="players">
             <join-columns>
                 <join-column name="team_id" referenced-column-name="id" nullable="false"/>
             </join-columns>

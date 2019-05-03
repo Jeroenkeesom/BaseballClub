@@ -6,7 +6,7 @@
             <generator strategy="IDENTITY"/>
         </id>
         <field name="name" type="string" nullable="false"/>
-        <one-to-many field="player" target-entity="Player" mapped-by="id"/>
+        <one-to-many field="players" target-entity="Player" mapped-by="team"/>
 
     </entity>
 </doctrine-mapping>
