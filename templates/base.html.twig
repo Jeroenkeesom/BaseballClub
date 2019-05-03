@@ -26,6 +26,8 @@
             <li><a href="{{ path('fos_user_profile_edit') }}">Profile</a></li>
             <li><a href="{{ path('fos_user_change_password') }}">Change Password</a></li>
             <li class="divider"></li>
+            <li><a data-target="help" class="modal-trigger">Help / Abbreviations</a></li>
+            <li class="divider"></li>
             <li><a href="{{ path('fos_user_security_logout') }}">logout</a></li>
         </ul>
         <nav class="col s12 navbar-fixed">
@@ -37,6 +39,60 @@
                 <li><a class="dropdown-trigger" href="#" data-target="dropdown1"><i class="material-icons right">face</i></a></li>
             </ul>
         </nav>
+
+        <div id="help" class="modal">
+            <div class="modal-content">
+                <h4>Abbreviations:</h4>
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th>code</th>
+                        <th>explanations</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>IP%</th>
+                        <td>percentage of inning played vs games total innings present.</td>
+                    </tr>
+                    <tr>
+                        <th>GP#</th>
+                        <td>number of games played (player active).</td>
+                    </tr>
+                    <tr>
+                        <th>GPr</th>
+                        <td>number of games player was present, but might not have been playing.</td>
+                    </tr>
+                    <tr>
+                        <th>IP#</th>
+                        <td>number of inning played.</td>
+                    </tr>
+                    <tr>
+                        <th>TR%</th>
+                        <td>average training presents over last 4 weeks.</td>
+                    </tr>
+                    <tr>
+                        <th>I2T</th>
+                        <td>number of inning vs the number of trainings present expressed in a ratio number.</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4>Help:</h4>
+                <p>
+                    This apps keeps track of all presence during training and games and looks
+                    at the number of innings played
+                </p>
+                <ul class="collection">
+                    <li class="collection-item">You can add users under the add button</li>
+                    <li class="collection-item">Get your team overview (incl shirt numbers)</li>
+                    <li class="collection-item">keep track of training presence</li>
+                </ul>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
 
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large red">
