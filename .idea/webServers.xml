@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="008860cd-0b05-4bbe-a340-e6969361a77c" name="keesom.app" url="http://keesom.app">
+        <fileTransfer host="keesom.app" port="22" rootFolder="/home/jeroeij260/domains/keesom.app" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
