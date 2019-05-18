@@ -7,6 +7,7 @@
         </id>
         <many-to-one field="type" target-entity="App\Entity\EventType" inversed-by="events"/>
         <field name="date" type="date" nullable="false"/>
+        <field name="opponent" type="string" nullable="true"/>
         <field name="NoOfInnings" type="integer" nullable="true"/>
         <one-to-many field="presences" target-entity="App\Entity\EventPresence" mapped-by="event">
             <cascade>

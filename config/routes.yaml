@@ -8,3 +8,4 @@
 #    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+

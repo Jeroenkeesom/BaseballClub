@@ -18,6 +18,8 @@ class Event
 
     private $presences;
 
+    private $opponent;
+
     public function __construct()
     {
         $this->presences = new ArrayCollection();
@@ -91,6 +93,18 @@ class Event
                 $presence->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getOpponent(): ?string
+    {
+        return $this->opponent;
+    }
+
+    public function setOpponent(?string $opponent): self
+    {
+        $this->opponent = $opponent;
 
         return $this;
     }
