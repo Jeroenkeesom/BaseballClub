@@ -14,5 +14,8 @@
                 <cascade-persist/>
             </cascade>
         </one-to-many>
+        <unique-constraints>
+            <unique-constraint columns="type_id,date"/>
+        </unique-constraints>
     </entity>
 </doctrine-mapping>
