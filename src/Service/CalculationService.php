@@ -28,7 +28,7 @@ class CalculationService
         $totalGameInningsWhenPresent = $this->getAvailableInnings($player);
         $totalInningsPlayed = $this->getNumberOfInningsPlayed($player);
         if ($totalGameInningsWhenPresent == 0) {
-            return 0;
+            return 100;
         }
 
         return $totalInningsPlayed / $totalGameInningsWhenPresent * 100;

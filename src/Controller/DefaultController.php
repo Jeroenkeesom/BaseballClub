@@ -41,7 +41,7 @@ class DefaultController extends AbstractController
         usort(
             $calculatedPlayerResult,
             function ($a, $b) {
-                return $b['i2t'] <=> $a['i2t'];
+                return $a['ips'] <=> $b['ips'];
             }
         );
         return $this->render('default/index.html.twig', [
