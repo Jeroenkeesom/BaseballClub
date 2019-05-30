@@ -32,7 +32,7 @@ class EventRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('u');
         $qb->select('u')
             ->where('u.type = :val')
-            ->orderBy('u.date')
+            ->orderBy('u.date', 'DESC')
             ->setMaxResults(1)
             ->setParameter('val', $type);
 
