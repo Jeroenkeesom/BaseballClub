@@ -39,6 +39,10 @@ class EventRepository extends ServiceEntityRepository
         return $qb->getQuery()->getSingleResult();
     }
 
+    public function findAllOrdered()
+    {
+        return $this->findBy(array (), array ('date' => 'DESC'));
+    }
     // /**
     //  * @return Event[] Returns an array of Event objects
     //  */

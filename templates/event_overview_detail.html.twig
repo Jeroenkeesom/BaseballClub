@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}Event Overview Detail- Baseball Club!{% endblock %}
+
+{% block nav_path %}
+    <a href="{{ path('default') }}" class="breadcrumb">&nbsp; Baseball Club!</a>
+    <a href="{{ path('overview') }}" class="breadcrumb">&nbsp;Overview </a>
+    <span class="breadcrumb">Event Detail</span>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card ">
+                    <div class="card-content">
+                        <span class="card-title">Event Details</span>
+                        <table class="table striped">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                {% if event.type.name == 'Game' %}
+                                    <th>No of Innings</th>
+                                {% endif %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td> {{ event.date | date('d-M-Y') }}</td>
+                                <td> {{ event.type.name }}</td>
+                                {% if event.type.name == 'Game' %}
+                                    <td> {{ event.noOfInnings }}</td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                <th colspan="2">Who was present:</th>
+                            </tr>
+                            {% for present in event.presences %}
+                                {% if present.presentDuringGame %}
+                                    <tr>
+                                        <td>{{ present.player.firstName }}</td>
+                                        <td>{{ present.player.lastname }}</td>
+                                        {% if event.type.name == 'Game' %}
+                                            <td> {{ present.noOfInningsPlayed }} of {{ event.noOfInnings }} total.</td>
+                                        {% endif %}
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

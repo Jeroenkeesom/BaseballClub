@@ -6,6 +6,7 @@ use App\Repository\PlayerRepository;
 use App\Service\CalculationService;
 use App\Service\EventService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -60,4 +61,48 @@ class DefaultController extends AbstractController
         );
     }
 
+    /**
+     * @Route("/overview", name="overview")
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @param \App\Service\EventService                 $eventService
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function overview(Request $request, EventService $eventService)
+    {
+        // @todo create filter for type and data range
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $events = $eventService->getAllEvents();
+
+        return $this->render(
+            'event_overview.html.twig',
+            [
+                'events' => $events,
+            ]
+        );
+    }
+
+    /**
+     * @Route("/overview-detail/{eventId}", name="overviewDetail")
+     *
+     * @param \App\Service\EventService $eventService
+     *
+     * @param int                       $eventId
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function overviewDetail(EventService $eventService, int $eventId)
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $event = $eventService->getEventDetailsForId($eventId);
+
+        return $this->render(
+            'event_overview_detail.html.twig',
+            [
+                'event' => $event,
+            ]
+        );
+    }
 }
