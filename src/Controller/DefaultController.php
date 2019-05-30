@@ -37,7 +37,13 @@ class DefaultController extends AbstractController
             $calculatedPlayerResult[$player->getId()]['tr'] = $calculation->getAvgTrainingPres($player);
             $calculatedPlayerResult[$player->getId()]['i2t'] = $calculation->getI2TNumber($player);
         }
-
+        //sort array on i2t (with highest on top)
+        usort(
+            $calculatedPlayerResult,
+            function ($a, $b) {
+                return $b['i2t'] <=> $a['i2t'];
+            }
+        );
         return $this->render('default/index.html.twig', [
             'calculatedPlayerResult' => $calculatedPlayerResult,
             'lastTraining' => $eventService->getLastedEvent($eventService->getEventType('Training')),

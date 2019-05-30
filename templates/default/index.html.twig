@@ -25,25 +25,32 @@
                             <tr>
                                 <th>Player</th>
                                 <th>IP%</th>
+                                <th>TR%</th>
+                                <th>I2T</th>
                                 <th>GP#</th>
                                 <th>GAv</th>
                                 <th>IP#</th>
                                 <th>IA#</th>
-                                <th>TR%</th>
-                                <th>I2T</th>
+
                             </tr>
                             </thead>
                             <tbody>
                             {% for key in calculatedPlayerResult %}
+                                {% if key.i2t > 0.99 %}
+                                    {% set color = 'green' %}
+                                {% else %}
+                                    {% set color = 'black' %}
+                                {% endif %}
                             <tr>
-                                <td>{{ key.player.firstName }} #{{ key.player.shirtNumber }}</td>
+                                <td style="color:{{ color }}">{{ key.player.firstName }} {{ key.player.lastName[0:2] }}. #{{ key.player.shirtNumber }}</td>
+                                <td>{{ key.tr |round(0, 'floor') }}%</td>
+                                <td><strong>{{ key.i2t |round(3, 'floor') }}</strong></td>
                                 <td>{{ key.ips|round(0, 'floor') }}%</td>
                                 <td>{{ key.gp }}</td>
                                 <td>{{ key.gpr }}</td>
                                 <td>{{ key.ipn }}</td>
                                 <td>{{ key.ipa }}</td>
-                                <td>{{ key.tr |round(0, 'floor') }}%</td>
-                                <td><strong>{{ key.i2t |round(3, 'floor') }}</strong></td>
+
                             </tr>
                             {% endfor %}
                             </tbody>
