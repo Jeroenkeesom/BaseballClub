@@ -74,6 +74,9 @@ class GameController extends AbstractController
                 $presence->setEvent($game);
                 $presence->setPresentDuringGame($playerPresent);
                 $presence->setPlayer($this->getDoctrine()->getRepository(Player::class)->find($playerId));
+                if ($playerPresent === false) {
+                    $noOfInnings = 0;
+                }
                 $presence->setNoOfInningsPlayed($noOfInnings);
                 $em->persist($presence);
             }
