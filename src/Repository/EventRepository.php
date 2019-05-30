@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Event;
+use App\Entity\EventType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -17,6 +18,25 @@ class EventRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Event::class);
+    }
+
+    /**
+     * @param \App\Entity\EventType $type
+     *
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getLatestEventOfType(EventType $type)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->select('u')
+            ->where('u.type = :val')
+            ->orderBy('u.date')
+            ->setMaxResults(1)
+            ->setParameter('val', $type);
+
+        return $qb->getQuery()->getSingleResult();
     }
 
     // /**

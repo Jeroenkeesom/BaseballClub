@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\PlayerRepository;
 use App\Service\CalculationService;
+use App\Service\EventService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,9 +15,13 @@ class DefaultController extends AbstractController
      * @param \App\Repository\PlayerRepository $playerRepository
      * @param \App\Service\CalculationService  $calculation
      *
+     * @param \App\Service\EventService        $eventService
+     *
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function index(PlayerRepository $playerRepository, CalculationService $calculation)
+    public function index(PlayerRepository $playerRepository, CalculationService $calculation, EventService $eventService)
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $players = $playerRepository->findBy(['active' => true]);
@@ -34,6 +39,8 @@ class DefaultController extends AbstractController
 
         return $this->render('default/index.html.twig', [
             'calculatedPlayerResult' => $calculatedPlayerResult,
+            'lastTraining' => $eventService->getLastedEvent($eventService->getEventType('Training')),
+            'lastGame' => $eventService->getLastedEvent($eventService->getEventType('Game')),
         ]);
     }
 
