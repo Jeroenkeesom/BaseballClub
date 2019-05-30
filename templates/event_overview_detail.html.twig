@@ -37,7 +37,7 @@
                                 <th colspan="2">Who was present:</th>
                             </tr>
                             {% for present in event.presences %}
-                                {% if present.presentDuringGame %}
+                                {% if present.presentDuringGame or event.type.name == 'Training' %}
                                     <tr>
                                         <td>{{ present.player.firstName }}</td>
                                         <td>{{ present.player.lastname }}</td>
