@@ -1,8 +1,3 @@
 ## **Baseball Club**
 
-API server for BaseBall Club mobile App
-
-_use_:
-
-1. symfony migrations 
-2. yarn encore (scss)
+This is an uncomplete symfony app and is only to be used as example how I have written my code in most basic form as working product in SF4
